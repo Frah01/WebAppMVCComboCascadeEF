@@ -16,13 +16,17 @@ public partial class TComune
     public int Id { get; set; }
 
     [StringLength(100)]
+    [Display(Name = "Nome Comune")]
     public string Nome { get; set; }
 
     public int? IdProvincia { get; set; }
 
+    [Display(Name = "Num. Abitanti")]
     public int? NumAbitanti { get; set; }
 
     [ForeignKey("IdProvincia")]
     [InverseProperty("TComunes")]
+    [Display(Name = "Provincia di Appartenenza")]
+
     public virtual TProvincium IdProvinciaNavigation { get; set; }
 }

@@ -1,7 +1,13 @@
+using WebAppMVCComboCascadeEF.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// ADD ENTITY FRAMEWORK
+builder.Services.AddDbContext<CorsoAcademyContext>(
+    );
 
 var app = builder.Build();
 

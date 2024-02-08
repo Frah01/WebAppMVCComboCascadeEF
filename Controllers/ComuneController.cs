@@ -47,7 +47,7 @@ namespace WebAppMVCComboCascadeEF.Controllers
         // GET: Comune/Create
         public IActionResult Create()
         {
-            ViewData["IdProvincia"] = new SelectList(_context.TProvincia, "Id", "Id");
+            ViewData["IdProvincia"] = new SelectList(_context.TProvincia, "Id", "Nome");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace WebAppMVCComboCascadeEF.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdProvincia"] = new SelectList(_context.TProvincia, "Id", "Id", tComune.IdProvincia);
+            ViewData["IdProvincia"] = new SelectList(_context.TProvincia, "Id", "Nome", tComune.IdProvincia);
             return View(tComune);
         }
 
@@ -81,7 +81,7 @@ namespace WebAppMVCComboCascadeEF.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdProvincia"] = new SelectList(_context.TProvincia, "Id", "Id", tComune.IdProvincia);
+            ViewData["IdProvincia"] = new SelectList(_context.TProvincia, "Id", "Nome", tComune.IdProvincia);
             return View(tComune);
         }
 

@@ -47,7 +47,7 @@ namespace WebAppMVCComboCascadeEF.Controllers
         // GET: Provincia/Create
         public IActionResult Create()
         {
-            ViewData["IdRegione"] = new SelectList(_context.TRegiones, "Id", "Id");
+            ViewData["IdRegione"] = new SelectList(_context.TRegiones, "Id", "Nome");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace WebAppMVCComboCascadeEF.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdRegione"] = new SelectList(_context.TRegiones, "Id", "Id", tProvincium.IdRegione);
+            ViewData["IdRegione"] = new SelectList(_context.TRegiones, "Id", "Nome", tProvincium.IdRegione);
             return View(tProvincium);
         }
 
@@ -81,7 +81,7 @@ namespace WebAppMVCComboCascadeEF.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdRegione"] = new SelectList(_context.TRegiones, "Id", "Id", tProvincium.IdRegione);
+            ViewData["IdRegione"] = new SelectList(_context.TRegiones, "Id", "Nome", tProvincium.IdRegione);
             return View(tProvincium);
         }
 
@@ -117,7 +117,7 @@ namespace WebAppMVCComboCascadeEF.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdRegione"] = new SelectList(_context.TRegiones, "Id", "Id", tProvincium.IdRegione);
+            ViewData["IdRegione"] = new SelectList(_context.TRegiones, "Id", "Nome", tProvincium.IdRegione);
             return View(tProvincium);
         }
 

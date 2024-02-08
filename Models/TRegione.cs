@@ -16,10 +16,14 @@ public partial class TRegione
     public int Id { get; set; }
 
     [StringLength(50)]
+    [Display(Name = "Regione")]
     public string Nome { get; set; }
 
     [Column("isAutonoma")]
+    [Display(Name = "E' Autonoma")]
     public bool? IsAutonoma { get; set; }
+
+    [Display(Name = "Num. Abitanti")]
 
     public int? NumAbitanti { get; set; }
 

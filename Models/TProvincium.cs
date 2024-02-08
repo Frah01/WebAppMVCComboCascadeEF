@@ -16,20 +16,25 @@ public partial class TProvincium
     public int Id { get; set; }
 
     [StringLength(50)]
+    [Display(Name = "Nome Provincia")]
     public string Nome { get; set; }
 
     [Column("idRegione")]
     public int? IdRegione { get; set; }
 
+    [Display(Name = "Num. Abitanti")]
     public int? NumAbitanti { get; set; }
 
     [Column("isCapoluogo")]
+    [Display(Name = "E' Capoluogo")]
     public bool? IsCapoluogo { get; set; }
 
     [ForeignKey("IdRegione")]
     [InverseProperty("TProvincia")]
+    [Display(Name = "Regione di Appartenenza")]
     public virtual TRegione IdRegioneNavigation { get; set; }
 
     [InverseProperty("IdProvinciaNavigation")]
+    
     public virtual ICollection<TComune> TComunes { get; set; } = new List<TComune>();
 }
