@@ -1,8 +1,51 @@
-﻿@{
+﻿@model WebAppMVCComboCascadeEF.Models.CascadingModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+    <body>
+        <div class="text-center">
+    
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                {
+                    @Html.DropDownListFor(m => m.IdRegione, Model.Regioni, "Please select", new { onchange = "document.forms[0].submit();" })
+                    <br />
+                    <br />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+                    @Html.DropDownListFor(m => m.IdProvincia, Model.Province, "Please select", new { onchange = "document.forms[0].submit();", disabled = "disabled" })
+                    <br />
+                    <br />
+
+                    @Html.DropDownListFor(m => m.IdComune, Model.Comuni, "Please select", new { disabled = "disabled" })
+                    <br />
+                    <br />
+                    <input type="submit" value="Submit" />
+                }
+                <script>
+                    $(function () {
+                        if ($("#IdProvincia option").length > 1) {
+                            $("#IdProvincia").removeAttr("disabled");
+                        }
+
+                        if ($("#IdComune option").length > 1) {
+                            $("#IdComune").removeAttr("disabled");
+                        }
+
+                        if ($("#IdRegione").val() != "" && $("#IdProvincia").val() != "" && $("#IdComune").val() != "") {
+                            var message = "Regione: " + $("#IdRegione option:selected").text();
+                            message += "\nProvincia: " + $("#IdProvincia option:selected").text();
+                            message += "\nComune: " + $("#IdComune option:selected").text();
+                            alert(message);
+                        }
+                    });
+                </script>
+        </div>
+    </body>
+</html>
