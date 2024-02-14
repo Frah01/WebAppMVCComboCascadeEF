@@ -1,6 +1,27 @@
+using Serilog.Events;
+using Serilog;
 using WebAppMVCComboCascadeEF.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();   // NO Microsoft Logging - VEDERE Sezione Logging di appsettings.json
+
+// SERILOG
+var logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .Build())
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Error)  // NO Microsoft Logging
+    .Enrich.FromLogContext()
+    .CreateLogger();
+
+builder.Host.UseSerilog(logger);
+
+// SERILOG
+
+//  placing UseSerilogRequestLogging() after UseStaticFiles
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -21,6 +42,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+//SERILOG
+app.UseSerilogRequestLogging();
 
 app.UseRouting();
 
