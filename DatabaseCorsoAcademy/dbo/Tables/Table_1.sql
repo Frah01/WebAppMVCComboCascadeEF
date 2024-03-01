@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Table_1] (
+    [ID]      UNIQUEIDENTIFIER NOT NULL,
+    [Nome]    NVARCHAR (50)    NULL,
+    [Cognome] NVARCHAR (100)   NULL,
+    CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
